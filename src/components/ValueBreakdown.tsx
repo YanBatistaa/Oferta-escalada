@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import { Check, Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { useWhatsAppRotation } from "@/hooks/useWhatsAppRotation";
 
 export const ValueBreakdown = () => {
-  const { redirectToWhatsApp } = useWhatsAppRotation();
   const items = [
     { label: "Site profissional completo", value: "R$ 1.200" },
     { label: "Domínio personalizado (.com.br)", value: "R$ 200/ano" },

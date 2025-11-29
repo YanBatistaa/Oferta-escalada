@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { useWhatsAppRotation } from "@/hooks/useWhatsAppRotation";
 
 export const StickyHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { redirectToWhatsApp } = useWhatsAppRotation();
+  const whatsappLink = "https://wa.me/5511933699801?text=Olá!%20Gostaria%20de%20desenvolver%20o%20site";
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -38,14 +37,13 @@ export const StickyHeader = () => {
           </span>
         </div>
         
-        <Button 
-          onClick={redirectToWhatsApp}
-          className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-        >
-          <MessageCircle className="mr-2 h-4 w-4" />
-          <span className="hidden sm:inline">Falar no WhatsApp</span>
-          <span className="sm:hidden">WhatsApp</span>
-        </Button>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+          <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+            <MessageCircle className="mr-2 h-4 w-4" />
+            <span className="hidden sm:inline">Falar no WhatsApp</span>
+            <span className="sm:hidden">WhatsApp</span>
+          </Button>
+        </a>
       </div>
     </motion.header>
   );
