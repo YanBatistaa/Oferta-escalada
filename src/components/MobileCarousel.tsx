@@ -7,15 +7,31 @@ import siteAdvocacia2 from "@/assets/site-advocacia-2.png";
 export const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  const portfolioImages = [siteAdvocacia1, siteClinica, siteAdvocacia2];
+  const portfolioProjects = [
+    {
+      image: siteAdvocacia1,
+      title: "Escritório de Advocacia Criminal",
+      description: "Site profissional com design moderno e elegante para escritório especializado em perícia criminal"
+    },
+    {
+      image: siteClinica,
+      title: "Clínica de Estética e Dermatologia",
+      description: "Website completo com agendamento online para clínica de tratamentos faciais e corporais"
+    },
+    {
+      image: siteAdvocacia2,
+      title: "Advocacia Especializada",
+      description: "Portal jurídico com design premium para escritório de advocacia com foco em excelência"
+    }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % portfolioImages.length);
+      setCurrentIndex((prev) => (prev + 1) % portfolioProjects.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [portfolioImages.length]);
+  }, [portfolioProjects.length]);
 
   return (
     <section className="py-20 bg-muted/30">
@@ -58,8 +74,8 @@ export const MobileCarousel = () => {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentIndex}
-                    src={portfolioImages[currentIndex]}
-                    alt={`Portfolio ${currentIndex + 1}`}
+                    src={portfolioProjects[currentIndex].image}
+                    alt={portfolioProjects[currentIndex].title}
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -100 }}
@@ -71,9 +87,25 @@ export const MobileCarousel = () => {
             </div>
           </motion.div>
 
+          {/* Project Description */}
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mt-8 max-w-md mx-auto"
+          >
+            <h3 className="text-xl font-bold text-foreground mb-2">
+              {portfolioProjects[currentIndex].title}
+            </h3>
+            <p className="text-muted-foreground">
+              {portfolioProjects[currentIndex].description}
+            </p>
+          </motion.div>
+
           {/* Carousel Dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {portfolioImages.map((_, index) => (
+          <div className="flex justify-center gap-2 mt-6">
+            {portfolioProjects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
