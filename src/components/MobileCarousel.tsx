@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import portfolio1 from "@/assets/portfolio-4.jpg";
-import portfolio2 from "@/assets/portfolio-5.jpg";
+import siteAdvocacia1 from "@/assets/site-advocacia-1.png";
+import siteClinica from "@/assets/site-clinica.png";
+import siteAdvocacia2 from "@/assets/site-advocacia-2.png";
 
 export const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  const portfolioImages = [portfolio1, portfolio2, portfolio1, portfolio2, portfolio1];
+  const portfolioImages = [siteAdvocacia1, siteClinica, siteAdvocacia2];
 
   useEffect(() => {
     const interval = setInterval(() => {
