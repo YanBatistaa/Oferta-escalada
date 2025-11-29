@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 export const StickyHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const whatsappLink = "https://wa.me/5511933699801?text=Olá!%20Gostaria%20de%20desenvolver%20o%20site";
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -37,7 +36,7 @@ export const StickyHeader = () => {
           </span>
         </div>
         
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/5571991194657?text=Olá!%20Gostaria%20de%20desenvolver%20o%20site" target="_blank" rel="noopener noreferrer">
           <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
             <MessageCircle className="mr-2 h-4 w-4" />
             <span className="hidden sm:inline">Falar no WhatsApp</span>
