@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Clock, AlertCircle } from "lucide-react";
+import { useWhatsAppRotation } from "@/hooks/useWhatsAppRotation";
 
 export const FinalCTA = () => {
-  const whatsappLink = "https://wa.me/5511933699801?text=Olá!%20Gostaria%20de%20desenvolver%20o%20site";
+  const { redirectToWhatsApp } = useWhatsAppRotation();
 
   return (
     <section className="py-20 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
@@ -64,12 +65,14 @@ export const FinalCTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5, type: "spring" }}
           >
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-xl px-12 py-8 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <MessageCircle className="mr-3 h-6 w-6" />
-                Garantir Minha Oferta Agora
-              </Button>
-            </a>
+            <Button 
+              size="lg" 
+              onClick={redirectToWhatsApp}
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-xl px-12 py-8 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+            >
+              <MessageCircle className="mr-3 h-6 w-6" />
+              Garantir Minha Oferta Agora
+            </Button>
           </motion.div>
 
           <motion.p
