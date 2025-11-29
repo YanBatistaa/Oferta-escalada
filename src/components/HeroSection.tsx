@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, CheckCircle, Users, Clock } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useWhatsAppRotation } from "@/hooks/useWhatsAppRotation";
 
 export const HeroSection = () => {
-  const whatsappLink = "https://wa.me/5511933699801?text=Olá!%20Gostaria%20de%20desenvolver%20o%20site";
+  const { redirectToWhatsApp } = useWhatsAppRotation();
 
   return (
     <section 
@@ -60,12 +61,14 @@ export const HeroSection = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mb-12"
           >
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Garantir Minha Oferta
-              </Button>
-            </a>
+            <Button 
+              size="lg" 
+              onClick={redirectToWhatsApp}
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Garantir Minha Oferta
+            </Button>
           </motion.div>
 
           <motion.div
